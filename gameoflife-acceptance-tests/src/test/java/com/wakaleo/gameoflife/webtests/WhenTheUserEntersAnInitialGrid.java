@@ -38,7 +38,7 @@ public class WhenTheUserEntersAnInitialGrid {
     public void userShouldBeAbleChooseToCreateANewGameOnTheHomePage() {
         player.opens_home_page();
         player.chooses_to_start_a_new_game();
-        player.should_see_a_page_containing_text("Please seed your universe");
+        player.should_see_a_page_containing_text("Blah test failing");
 
     }
 
@@ -55,7 +55,7 @@ public class WhenTheUserEntersAnInitialGrid {
         player.opens_home_page();
         player.chooses_to_start_a_new_game();
         player.starts_simulation();
-        player.should_see_a_page_containing_text("Next Generation");
+        player.should_see_a_page_containing_text("Blah test failing");
     }
 
     @Test
@@ -69,7 +69,7 @@ public class WhenTheUserEntersAnInitialGrid {
                 {".", "*", "."},
                 {".", ".", "."}};
 
-        player.should_see_grid(expectedGrid);
+        player.should_see_grid("Blah test failing");
     }
 
     @Test
@@ -85,7 +85,7 @@ public class WhenTheUserEntersAnInitialGrid {
                 {".", "*", "."},
                 {".", ".", "."}};
 
-        player.should_see_grid(expectedGrid);
+        player.should_see_grid("Blah test failing");
     }
 
 
@@ -94,6 +94,6 @@ public class WhenTheUserEntersAnInitialGrid {
         player.opens_home_page();
         player.chooses_to_start_a_new_game();
         player.clicks_on_home();
-        player.should_see_a_page_containing_text("Welcome to Conway's Game Of Life");
+        player.should_see_a_page_containing_text("Blah test failing");
     }
 }
