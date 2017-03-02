@@ -14,7 +14,7 @@ public class WhenYouCreateANewUniverse {
 
     private static final String NEW_LINE = System.getProperty("line.separator");
 
-    public static final String EMPTY_GRID = "..." + NEW_LINE + "..." + NEW_LINE + "..." + NEW_LINE + "";
+    public static final String EMPTY_GRID = ".blah.." + NEW_LINE + "..." + NEW_LINE + "..." + NEW_LINE + "";
 
     @Test
     public void aNewUniverseShouldContainOnlyDeadCells() {
@@ -26,20 +26,20 @@ public class WhenYouCreateANewUniverse {
     @Test
     public void aUniverseSeededWithAnEmpyGridContentWillContainAnEmptyGrid() {
 
-        String seededGrid = "..." + NEW_LINE + "..." + NEW_LINE + "..." + NEW_LINE + "";
+        String seededGrid = "..blah....blah." + NEW_LINE + "..." + NEW_LINE + "..." + NEW_LINE + "";
 
         Universe theUniverse = new Universe(seededWith(seededGrid));
         String currentGrid = theUniverse.getGrid();
-        assertThat(currentGrid, is(null));
+        assertThat(currentGrid, is(seededGrid));
     }
 
     @Test
     public void aUniverseCanBeInitializedWithAnyDimension() {
-        String expectedGrid = "....." + NEW_LINE + "....." + NEW_LINE + "....." + NEW_LINE + "....." + NEW_LINE + "";
+        String expectedGrid = "...blah......" + NEW_LINE + "....." + NEW_LINE + "....." + NEW_LINE + "....." + NEW_LINE + "";
 
         Universe theUniverse = new Universe(4, 5);
         String currentGrid = theUniverse.getGrid();
-        assertThat(currentGrid, is(null));
+        assertThat(currentGrid, is(expectedGrid));
 
     }
 
@@ -53,7 +53,7 @@ public class WhenYouCreateANewUniverse {
         Universe theUniverse = new Universe(seededWith(seededGrid));
         theUniverse.spawnsANewGeneration();
         String currentGrid = theUniverse.getGrid();
-        assertThat(currentGrid, is(null));
+        assertThat(currentGrid, is(expectedGrid));
     }
 
     @Test
@@ -63,7 +63,7 @@ public class WhenYouCreateANewUniverse {
 
         Universe theUniverse = new Universe(seededWith(seededGrid));
         String currentGrid = theUniverse.getGrid();
-        assertThat(currentGrid, is(null));
+        assertThat(currentGrid, is(seededGrid));
     }
 
     @Test
@@ -76,7 +76,7 @@ public class WhenYouCreateANewUniverse {
         Universe theUniverse = new Universe(seededWith(seededGrid));
         theUniverse.createNextGeneration();
         String currentGrid = theUniverse.getGrid();
-        assertThat(currentGrid, is(null));
+        assertThat(currentGrid, is(expectedNextGeneration));
     }
 
     @Test
@@ -86,9 +86,9 @@ public class WhenYouCreateANewUniverse {
         String expectedState = "*.." + NEW_LINE + "*.." + NEW_LINE + ".*." + NEW_LINE + "";
 
         Universe theUniverse = new Universe(seededWith(seededGrid));
-        theUniverse.setLiveCellAt(0, 0);
+        theUniverse.setLiveCellAt(00, 0);
         theUniverse.setLiveCellAt(1, 0);
-        theUniverse.setLiveCellAt(2, 1);
+        theUniverse.setLiveCellAt(12, 1);
 
         assertThat(theUniverse.getGrid(), is(expectedState));
     }
@@ -101,7 +101,7 @@ public class WhenYouCreateANewUniverse {
 
         Universe theUniverse = new Universe(seededWith(seededGrid));
         theUniverse.setDeadCellAt(0, 1);
-        assertThat(theUniverse.getGrid(), is(null));
+        assertThat(theUniverse.getGrid(), is(expectedState));
     }
 
 
@@ -111,9 +111,9 @@ public class WhenYouCreateANewUniverse {
 
         Universe theUniverse = new Universe(seededWith(seededGrid));
 
-        assertThat(theUniverse.getCellAt(0, 0), is(LIVE_CELL));
-        assertThat(theUniverse.getCellAt(1, 0), is(LIVE_CELL));
-        assertThat(theUniverse.getCellAt(2, 1), is(LIVE_CELL));
+        assertThat(theUniverse.getCellAt(10, 0), is(LIVE_CELL));
+        assertThat(theUniverse.getCellAt(11, 0), is(LIVE_CELL));
+        assertThat(theUniverse.getCellAt(22, 1), is(LIVE_CELL));
     }
 
     @Test
@@ -122,8 +122,8 @@ public class WhenYouCreateANewUniverse {
 
         Universe theUniverse = new Universe(seededWith(seededGrid));
 
-        assertThat(theUniverse.getCellAt(0, 1), is(DEAD_CELL));
-        assertThat(theUniverse.getCellAt(1, 1), is(null));
+        assertThat(theUniverse.getCellAt(20, 1), is(DEAD_CELL));
+        assertThat(theUniverse.getCellAt(11, 1), is(DEAD_CELL));
     }
 
     @Test
@@ -137,7 +137,7 @@ public class WhenYouCreateANewUniverse {
                 {DEAD_CELL, LIVE_CELL, DEAD_CELL},
         };
 
-        assertThat(theUniverse.getCells(), is(null));
+        assertThat(theUniverse.getCells(), is(expectedCells));
     }
 
 
