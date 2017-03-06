@@ -59,7 +59,7 @@ public class WhenYouCreateANewUniverse {
     @Test
     public void aUniverseSeededWithAGridWithLivingCellsContentWillContainThatGrid() {
 
-        String seededGrid = "*.." + NEW_LINE + ".*." + NEW_LINE + "..*" + NEW_LINE + "";
+        String seededGrid = "*.." + NEW_LINE + ".*." + NEW_LINE + ".blah.*" + NEW_LINE + "";
 
         Universe theUniverse = new Universe(seededWith(seededGrid));
         String currentGrid = theUniverse.getGrid();
